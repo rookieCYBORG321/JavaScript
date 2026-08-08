@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Theme Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- PRN Header Badge -->
+    <div class="prn-badge-card full-width">
+        <span class="prn-label">Student PRN:</span>
+        <span class="prn-value">24070521241</span>
+    </div>
+
+    <!-- Theme & Configuration Bar -->
+    <section class="card full-width header-bar">
+        <h2>Task Lifecycle Manager</h2>
+        <div class="theme-selector-group">
+            <label for="themeSelect">Active UI Theme:</label>
+            <select id="themeSelect">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Slate</option>
+                <option value="ocean">Oceanic Blue</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Task Creation Form -->
+    <section class="card">
+        <h2>Create New Task</h2>
+        <form id="taskForm" novalidate>
+            <div class="form-group">
+                <label for="taskInput">Task Description</label>
+                <input type="text" id="taskInput" placeholder="e.g. Complete Lab Practical 7" required>
+                <div class="error-msg" id="taskError">Task description cannot be empty.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="prioritySelect">Priority Level</label>
+                <select id="prioritySelect">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">Add Task</button>
+        </form>
+    </section>
+
+    <!-- Task List & Filtering Section -->
+    <section class="card">
+        <div class="filter-header">
+            <h2>Task List</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Task Item Container -->
+        <ul id="taskList" class="task-list">
+            <!-- Dynamic task items populated via JS -->
+        </ul>
+
+        <!-- Action Control Bar -->
+        <div class="action-bar">
+            <span id="taskCount" class="task-count">0 tasks remaining</span>
+            <button id="purgeCompletedBtn" class="btn-danger-outline">Purge Completed</button>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

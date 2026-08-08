@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Billing Engine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- PRN Header Badge -->
+    <div class="prn-badge-card full-width">
+        <span class="prn-label">Student PRN:</span>
+        <span class="prn-value">24070521241</span>
+    </div>
+
+    <!-- Product Selection & Quantity Form -->
+    <section class="card">
+        <h2>Product Selection & Cart</h2>
+
+        <form id="addItemForm" class="form-grid">
+            <div class="form-group">
+                <label for="productSelect">Select Item</label>
+                <select id="productSelect" required>
+                    <option value="" disabled selected>Choose a product...</option>
+                    <option value="Wireless Headphones" data-price="1200">Wireless Headphones (₹1200)</option>
+                    <option value="Mechanical Keyboard" data-price="3500">Mechanical Keyboard (₹3500)</option>
+                    <option value="Ergonomic Mouse" data-price="1500">Ergonomic Mouse (₹1500)</option>
+                    <option value="USB-C Docking Station" data-price="2800">USB-C Docking Station (₹2800)</option>
+                    <option value="HD Web Camera" data-price="2200">HD Web Camera (₹2200)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="productQty">Quantity</label>
+                <input type="number" id="productQty" min="1" max="100" value="1" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Add to Cart</button>
+        </form>
+
+        <!-- Dynamic Cart Table -->
+        <table class="cart-table">
+            <thead>
+            <tr>
+                <th>Item Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="cartTableBody">
+            <!-- Cart items populated via JS -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Real-time Summary & Settings -->
+    <section class="card">
+        <h2>Billing Calculation Settings</h2>
+
+        <div class="form-group">
+            <label for="taxRate">Applicable Tax Rate (GST %)</label>
+            <input type="number" id="taxRate" value="18" min="0" max="50" step="0.5">
+        </div>
+
+        <div class="discount-rules-box">
+            <h4>Automatic Discount Thresholds</h4>
+            <ul>
+                <li>Subtotal &gt; ₹5,000 : <strong>10% Discount</strong></li>
+                <li>Subtotal &gt; ₹10,000 : <strong>15% Discount</strong></li>
+                <li>Subtotal &gt; ₹20,000 : <strong>20% Discount</strong></li>
+            </ul>
+        </div>
+
+        <button id="generateInvoiceBtn" class="btn-success">Generate Itemized Invoice</button>
+    </section>
+
+    <!-- Itemized Invoice Display -->
+    <section class="card full-width">
+        <h2>Rendered Itemized Invoice</h2>
+        <div id="invoiceOutput" class="invoice-container">
+            <p class="placeholder-text">Add items to cart and click 'Generate Itemized Invoice'.</p>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

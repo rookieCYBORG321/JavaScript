@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Academic Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- PRN Identification Box -->
+    <div class="prn-badge-card full-width">
+        <span class="prn-label">Student PRN:</span>
+        <span class="prn-value">24070521241</span>
+    </div>
+
+    <!-- Institutional Profile Section -->
+    <section class="card full-width">
+        <h2>Institutional Profile Configuration</h2>
+        <div class="institution-grid">
+            <div class="form-group">
+                <label for="instName">Institution</label>
+                <input type="text" id="instName" value="Symbiosis Institute of Technology" readonly>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" onchange="AcademicPortal.updateSystem()">
+                    <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="AI & Machine Learning">AI & Machine Learning</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="academicYear">Academic Batch</label>
+                <select id="academicYear" onchange="AcademicPortal.updateSystem()">
+                    <option value="2024-2028">2024–2028</option>
+                    <option value="2023-2027">2023–2027</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Data Entry Form -->
+    <section class="card">
+        <h2>Student Information Form</h2>
+        <form id="studentForm" novalidate>
+            <div class="form-group">
+                <label for="studentName">Student Full Name</label>
+                <input type="text" id="studentName" placeholder="Enter Full Name" required>
+                <div class="error-msg" id="nameError">Name must contain at least 3 letters.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="prn">Permanent Registration Number (PRN)</label>
+                <input type="text" id="prn" value="24070521241" readonly>
+                <div class="error-msg" id="prnError">PRN must be an 11-digit numeric string.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Institutional Email</label>
+                <input type="email" id="email" placeholder="student@sit.edu.in" required>
+                <div class="error-msg" id="emailError">Enter a valid institutional email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester">
+                    <option value="Semester V (3rd Year)">Semester V (3rd Year)</option>
+                    <option value="Semester VI (3rd Year)">Semester VI (3rd Year)</option>
+                    <option value="Semester VII (4th Year)">Semester VII (4th Year)</option>
+                </select>
+            </div>
+
+            <button type="submit">Link & Generate Profile</button>
+        </form>
+    </section>
+
+    <!-- Linked Information Display -->
+    <section class="card">
+        <h2>Linked System Output</h2>
+        <div id="portalOutput">
+            <p class="placeholder-text">
+                Complete and submit the form to link student profile with institutional records.
+            </p>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

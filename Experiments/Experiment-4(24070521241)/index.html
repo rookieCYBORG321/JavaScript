@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 4 - Palindrome Checker & JS Core Mechanics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Student Details Header Badge -->
+    <div class="profile-header-card full-width">
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT NAME:</span>
+            <span class="detail-value">Parth Jani</span>
+        </div>
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT PRN:</span>
+            <span class="detail-value">24070521241</span>
+        </div>
+    </div>
+
+    <!-- Palindrome Input Form -->
+    <section class="card">
+        <h2>Palindrome Evaluator</h2>
+        <form id="palindromeForm" novalidate>
+            <div class="form-group">
+                <label for="textInput">Enter Phrase or Word</label>
+                <input type="text" id="textInput" placeholder="e.g. A man, a plan, a canal: Panama" required>
+            </div>
+
+            <div class="options-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="ignoreSpace" checked> Ignore Spaces & Punctuation
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="ignoreCase" checked> Case Insensitive
+                </label>
+            </div>
+
+            <button type="submit" class="btn-primary">Evaluate Palindrome</button>
+        </form>
+    </section>
+
+    <!-- Inspection Output & Try-Catch Log -->
+    <section class="card">
+        <h2>Evaluation Result</h2>
+        <div id="outputDisplay">
+            <p class="placeholder-text">Enter text and click evaluate to view execution results.</p>
+        </div>
+    </section>
+
+    <!-- Closure Analytics Display -->
+    <section class="card full-width">
+        <h2>Encapsulated Session Analytics (Closure State)</h2>
+        <div class="analytics-grid">
+            <div class="stat-box">
+                <span class="stat-value" id="statTotal">0</span>
+                <span class="stat-label">Total Checks</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value" id="statPalindromes">0</span>
+                <span class="stat-label">Palindromes Found</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value" id="statErrors">0</span>
+                <span class="stat-label">Errors Caught</span>
+            </div>
+        </div>
+
+        <div class="history-container">
+            <h3>Recent Inspection Log</h3>
+            <ul id="historyList" class="history-list">
+                <!-- Dynamically updated via Closure -->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

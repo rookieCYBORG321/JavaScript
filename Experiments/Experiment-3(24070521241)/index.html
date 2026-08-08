@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 3 - Grade Evaluation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Student Details Header Badge -->
+    <div class="profile-header-card full-width">
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT NAME:</span>
+            <span class="detail-value">Parth Jani</span>
+        </div>
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT PRN:</span>
+            <span class="detail-value">24070521241</span>
+        </div>
+    </div>
+
+    <!-- Student Marks Entry Form -->
+    <section class="card">
+        <h2>Marks Evaluation Form</h2>
+        <form id="gradeForm" novalidate>
+            <div class="form-group">
+                <label for="sub1">Web Technologies (0–100)</label>
+                <input type="number" id="sub1" class="mark-input" min="0" max="100" placeholder="e.g. 85" required>
+                <div class="error-msg">Please enter valid marks between 0 and 100.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="sub2">Data Structures (0–100)</label>
+                <input type="number" id="sub2" class="mark-input" min="0" max="100" placeholder="e.g. 78" required>
+                <div class="error-msg">Please enter valid marks between 0 and 100.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="sub3">Database Management Systems (0–100)</label>
+                <input type="number" id="sub3" class="mark-input" min="0" max="100" placeholder="e.g. 92" required>
+                <div class="error-msg">Please enter valid marks between 0 and 100.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="sub4">Computer Networks (0–100)</label>
+                <input type="number" id="sub4" class="mark-input" min="0" max="100" placeholder="e.g. 64" required>
+                <div class="error-msg">Please enter valid marks between 0 and 100.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="sub5">Operating Systems (0–100)</label>
+                <input type="number" id="sub5" class="mark-input" min="0" max="100" placeholder="e.g. 88" required>
+                <div class="error-msg">Please enter valid marks between 0 and 100.</div>
+            </div>
+
+            <button type="submit" class="btn-primary">Calculate Grades</button>
+        </form>
+    </section>
+
+    <!-- Evaluation Results Output -->
+    <section class="card">
+        <h2>Academic Performance Sheet</h2>
+        <div id="gradeOutput">
+            <p class="placeholder-text">Enter subject marks and submit the form to generate the grade card.</p>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

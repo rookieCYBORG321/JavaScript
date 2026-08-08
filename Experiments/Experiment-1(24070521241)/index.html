@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 1 - JS Execution & Console Methods</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Internal JavaScript -->
+    <script>
+        console.info("Internal JS loaded in <head>.");
+        function handleInternalClick() {
+            alert("Internal JS: Executed successfully!");
+            console.log("Internal JS Button Clicked.");
+        }
+    </script>
+</head>
+<body>
+
+<!-- Student Profile Header Badge -->
+<div class="prn-badge-container">
+    <div class="prn-badge">
+        <span>Student Name: <strong>Parth Jani</strong></span>
+        <span>PRN: <strong>24070521241</strong></span>
+    </div>
+</div>
+
+<div class="main-wrapper">
+    <!-- Section 1: Internal JS -->
+    <section class="demo-section">
+        <h3 class="section-title">1. Internal JS</h3>
+        <h1 class="heading-blue">Welcome to Internal JS</h1>
+        <p class="text-red">This webpage is styled and scripted using Internal JS.</p>
+        <button class="btn-blue" onclick="handleInternalClick()">Click Here</button>
+    </section>
+
+    <!-- Section 2: Inline JS -->
+    <section class="demo-section">
+        <h3 class="section-title">2. Inline JS</h3>
+        <h1 class="heading-lime">Welcome to Inline JS</h1>
+        <p class="text-purple">This webpage is styled and scripted using Inline JS.</p>
+        <button class="btn-blue" onclick="alert('Inline JS: Triggered directly from HTML attribute!'); console.log('Inline JS triggered.');">Click Here</button>
+    </section>
+
+    <!-- Section 3: External JS -->
+    <section class="demo-section no-border">
+        <h3 class="section-title">3. External JS</h3>
+        <h1 class="heading-green">Welcome to External JS</h1>
+        <p class="text-purple">This webpage is styled and scripted using External JS.</p>
+        <button class="btn-orange" id="externalBtn">Click Here</button>
+    </section>
+
+    <!-- User Information & Welcome Display Card -->
+    <section class="user-info-card">
+        <div id="welcomeBanner" class="welcome-text"></div>
+        <div id="userInfoDisplay" class="info-grid"></div>
+    </section>
+</div>
+
+<!-- External JavaScript Link -->
+<script src="script.js"></script>
+</body>
+</html>

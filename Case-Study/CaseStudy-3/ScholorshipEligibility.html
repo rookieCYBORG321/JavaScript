@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Eligibility Matrix Engine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- PRN Badge Display Header -->
+    <div class="prn-badge-card full-width">
+        <span class="prn-label">Student PRN:</span>
+        <span class="prn-value">24070521241</span>
+    </div>
+
+    <!-- Parameter Input Section -->
+    <section class="card">
+        <h2>Scholarship Application Criteria</h2>
+        <form id="scholarshipForm" novalidate>
+            <div class="form-group">
+                <label for="cgpa">Academic Score (CGPA / 10)</label>
+                <input type="number" id="cgpa" min="0" max="10" step="0.01" placeholder="e.g. 8.75" required>
+                <div class="error-msg" id="cgpaError">Enter a valid CGPA between 0.00 and 10.00</div>
+            </div>
+
+            <div class="form-group">
+                <label for="income">Annual Family Income (₹)</label>
+                <input type="number" id="income" min="0" placeholder="e.g. 450000" required>
+                <div class="error-msg" id="incomeError">Enter a valid income amount.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category / Demographic Group</label>
+                <select id="category" required>
+                    <option value="General">General</option>
+                    <option value="OBC">OBC (Other Backward Classes)</option>
+                    <option value="SC/ST">SC / ST</option>
+                    <option value="Single Girl Child">Single Girl Child</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="specialQuota">Special Quota / Reservation</label>
+                <select id="specialQuota">
+                    <option value="None">None</option>
+                    <option value="Pwd">Person with Disability (PwD)</option>
+                    <option value="Sports">National/State Level Sports</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">Evaluate Eligibility</button>
+        </form>
+    </section>
+
+    <!-- Matrix State Output Section -->
+    <section class="card">
+        <h2>Eligibility Matrix Result</h2>
+        <div id="evaluationOutput">
+            <p class="placeholder-text">Submit parameters to trigger decision logic and generate state.</p>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
