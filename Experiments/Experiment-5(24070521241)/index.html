@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Calculator - Array Methods & Dynamic Discounting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Student Header Badge -->
+    <header class="profile-header-card full-width">
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT NAME:</span>
+            <span class="detail-value">Parth Jani</span>
+        </div>
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT PRN:</span>
+            <span class="detail-value">24070521241</span>
+        </div>
+    </header>
+
+    <!-- Product Input Form -->
+    <section class="card">
+        <h2>Add Item to Cart</h2>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="itemName">Product Name</label>
+                <input type="text" id="itemName" placeholder="e.g. Wireless Headphones" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="itemPrice">Price (₹)</label>
+                    <input type="number" id="itemPrice" min="1" step="0.01" placeholder="1499" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemQty">Quantity</label>
+                    <input type="number" id="itemQty" min="1" value="1" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="itemCategory">Category</label>
+                <select id="itemCategory">
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Books">Books</option>
+                    <option value="Groceries">Groceries</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">Add Product</button>
+        </form>
+    </section>
+
+    <!-- Dynamic Discount Controls -->
+    <section class="card">
+        <h2>Discount Controls</h2>
+
+        <!-- Direct Discount Percentage Input -->
+        <div class="form-group">
+            <label for="discountPercentInput">Set Discount Percentage (%)</label>
+            <div class="input-inline">
+                <input type="number" id="discountPercentInput" min="0" max="100" value="10" placeholder="e.g. 15">
+                <button type="button" id="applyPercentBtn" class="btn-secondary">Set %</button>
+            </div>
+            <small class="hint-text">Enter any value between 0% and 100% for live recalculation.</small>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Optional Promo Code Preset -->
+        <div class="form-group">
+            <label for="couponInput">Or Apply Preset Promo Code</label>
+            <div class="input-inline">
+                <input type="text" id="couponInput" placeholder="e.g. PARTH10 or JANI20">
+                <button type="button" id="applyCouponBtn" class="btn-secondary">Apply Code</button>
+            </div>
+            <small class="hint-text">Codes: <strong>PARTH10</strong> (10%), <strong>JANI20</strong> (20% over ₹2,000)</small>
+        </div>
+
+        <div id="couponMessage" class="coupon-status"></div>
+    </section>
+
+    <!-- Cart Table & Summary Display -->
+    <section class="card full-width">
+        <div class="table-header">
+            <h2>Shopping Cart Summary</h2>
+            <button id="clearCartBtn" class="btn-danger-outline">Clear Cart</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="cart-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Item</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="cartTableBody">
+                <!-- Dynamically generated using Array.map -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Calculated Totals -->
+        <div id="cartSummaryBlock" class="summary-block">
+            <!-- Dynamically generated using Array.reduce -->
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
