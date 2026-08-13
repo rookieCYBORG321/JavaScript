@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays and Loops</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Student Header Badge -->
+    <header class="profile-header-card full-width">
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT NAME:</span>
+            <span class="detail-value">Parth Jani</span>
+        </div>
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT PRN:</span>
+            <span class="detail-value">24070521241</span>
+        </div>
+    </header>
+
+    <!-- Part A: Basic Array Manipulations -->
+    <section class="card">
+        <h2>a) Array Manipulations</h2>
+        <div class="initial-array-box">
+            <strong>Active Array State:</strong> <span id="arrayState">[10, 20, 30, 40]</span>
+        </div>
+        <div class="btn-grid">
+            <button onclick="demoPush()">push(50)</button>
+            <button onclick="demoPop()">pop()</button>
+            <button onclick="demoShift()">shift()</button>
+            <button onclick="demoUnshift(5)">unshift(5)</button>
+            <button onclick="demoSplice()">splice(1, 1, 99)</button>
+            <button onclick="demoSlice()">slice(1, 3)</button>
+        </div>
+        <div id="partAOutput" class="output-log">Click any button above to test array methods.</div>
+    </section>
+
+    <!-- Part B: Array Iterative Methods -->
+    <section class="card">
+        <h2>b) Array Iterative Methods</h2>
+        <div class="initial-array-box">
+            <strong>Sample Array:</strong> <span>[1, 2, 3, 4, 5, 6]</span>
+        </div>
+        <div class="btn-grid">
+            <button onclick="demoMap()">map() [x * 2]</button>
+            <button onclick="demoFilter()">filter() [even]</button>
+            <button onclick="demoReduce()">reduce() [sum]</button>
+            <button onclick="demoForEach()">forEach() [log]</button>
+        </div>
+        <div id="partBOutput" class="output-log">Click a method to execute array iteration.</div>
+    </section>
+
+    <!-- Case Study: Max & Min Value Finder -->
+    <section class="card full-width">
+        <h2>Case Study: Maximum & Minimum Value Finder</h2>
+        <div class="case-study-box">
+            <div class="case-row">
+                <span>Default Case Study Input:</span>
+                <strong id="caseArrayDisplay">[25, 10, 45, 5, 30, 15]</strong>
+            </div>
+            <div class="input-row">
+                <input type="text" id="customNumbers" placeholder="Enter custom numbers e.g. 25, 10, 45, 5, 30, 15">
+                <button onclick="calculateMinMax()" class="btn-primary">Evaluate Min & Max</button>
+            </div>
+            <div id="minMaxResult" class="result-display-card"></div>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

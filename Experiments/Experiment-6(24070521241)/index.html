@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Functions & Regex Processor</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #334155;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --border: #cbd5e1;
+            --success: #16a34a;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        .full-width { grid-column: 1 / -1; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Profile Header Badge */
+        .profile-header-card {
+            background: var(--secondary);
+            color: #ffffff;
+            padding: 16px 24px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .profile-detail { display: flex; align-items: center; gap: 8px; }
+        .detail-label { font-size: 12px; font-weight: 600; color: #94a3b8; letter-spacing: 0.5px; }
+        .detail-value { font-size: 18px; font-weight: 700; background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 4px; }
+
+        h2 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .form-group { margin-bottom: 16px; }
+        label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .input-inline { display: flex; gap: 8px; }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-primary:hover { background: var(--primary-hover); }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .mt-3 { margin-top: 16px; }
+
+        .status-badge {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .status-badge.valid { background: #dcfce7; color: var(--success); }
+        .status-badge.invalid { background: #fee2e2; color: var(--danger); }
+
+        .result-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .stat-row:last-child { margin-bottom: 0; }
+        .stat-row span:first-child { font-weight: 600; color: #475569; }
+        .stat-row span:last-child { font-weight: 700; color: var(--primary); }
+
+        .highlight-data {
+            background: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Student Header Badge -->
+    <header class="profile-header-card full-width">
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT NAME:</span>
+            <span class="detail-value">Parth Jani</span>
+        </div>
+        <div class="profile-detail">
+            <span class="detail-label">STUDENT PRN:</span>
+            <span class="detail-value">24070521241</span>
+        </div>
+    </header>
+
+    <!-- 1. Email Validation Section -->
+    <section class="card full-width">
+        <h2>1. Strict Email Validation (Regex)</h2>
+        <div class="form-group">
+            <label for="emailInput">Enter Email Address</label>
+            <div class="input-inline">
+                <input type="text" id="emailInput" placeholder="e.g. parth.jani@sit.edu.in">
+                <button type="button" id="validateEmailBtn" class="btn-primary">Validate</button>
+            </div>
+            <div id="emailResult" class="status-badge">Waiting for input...</div>
+        </div>
+    </section>
+
+    <!-- 2. Text Analysis Section (String Functions) -->
+    <section class="card">
+        <h2>2. Text Analysis Engine</h2>
+        <div class="form-group">
+            <label for="analyzeText">Input Text</label>
+            <textarea id="analyzeText" rows="4" placeholder="Type a paragraph here to analyze..."></textarea>
+        </div>
+        <button type="button" id="analyzeBtn" class="btn-secondary">Analyze String</button>
+
+        <div id="analysisResult" class="result-box mt-3">
+            <div class="stat-row"><span>Character Count:</span> <span id="charCount">0</span></div>
+            <div class="stat-row"><span>Word Count:</span> <span id="wordCount">0</span></div>
+            <div class="stat-row"><span>Sentence Count:</span> <span id="sentenceCount">0</span></div>
+            <div class="stat-row"><span>Vowel Count:</span> <span id="vowelCount">0</span></div>
+        </div>
+    </section>
+
+    <!-- 3. Data Extraction Section (Regex matching) -->
+    <section class="card">
+        <h2>3. Data Extraction (Regex)</h2>
+        <div class="form-group">
+            <label for="extractText">Paste Raw Data</label>
+            <textarea id="extractText" rows="4" placeholder="Paste text containing 10-digit phone numbers or #hashtags..."></textarea>
+        </div>
+        <button type="button" id="extractBtn" class="btn-secondary">Extract Patterns</button>
+
+        <div class="result-box mt-3">
+            <div class="stat-row">
+                <span>Extracted Phones:</span>
+                <span id="phoneResult" class="highlight-data">None</span>
+            </div>
+            <div class="stat-row">
+                <span>Extracted Hashtags:</span>
+                <span id="hashtagResult" class="highlight-data">None</span>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    const RegexStringEngine = (() => {
+        const DOM = {
+            emailInput: document.getElementById('emailInput'),
+            validateEmailBtn: document.getElementById('validateEmailBtn'),
+            emailResult: document.getElementById('emailResult'),
+
+            analyzeText: document.getElementById('analyzeText'),
+            analyzeBtn: document.getElementById('analyzeBtn'),
+            charCount: document.getElementById('charCount'),
+            wordCount: document.getElementById('wordCount'),
+            sentenceCount: document.getElementById('sentenceCount'),
+            vowelCount: document.getElementById('vowelCount'),
+
+            extractText: document.getElementById('extractText'),
+            extractBtn: document.getElementById('extractBtn'),
+            phoneResult: document.getElementById('phoneResult'),
+            hashtagResult: document.getElementById('hashtagResult')
+        };
+
+        const validateEmailFormat = () => {
+            const email = DOM.emailInput.value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (email === "") {
+                DOM.emailResult.textContent = "Please enter an email address.";
+                DOM.emailResult.className = "status-badge";
+                return;
+            }
+
+            const isValid = emailPattern.test(email);
+
+            if (isValid) {
+                DOM.emailResult.textContent = "✓ Valid Email Format";
+                DOM.emailResult.className = "status-badge valid";
+            } else {
+                DOM.emailResult.textContent = "✗ Invalid Email Format";
+                DOM.emailResult.className = "status-badge invalid";
+            }
+        };
+
+        const performTextAnalysis = () => {
+            const text = DOM.analyzeText.value;
+            const trimmedText = text.trim();
+            const charCount = trimmedText.length;
+
+            const wordCount = trimmedText === "" ? 0 : trimmedText.split(/\s+/).length;
+            const sentences = trimmedText.split(/[.!?]+/).filter(Boolean);
+            const sentenceCount = trimmedText === "" ? 0 : sentences.length;
+
+            const vowels = trimmedText.match(/[aeiou]/gi);
+            const vowelCount = vowels ? vowels.length : 0;
+
+            DOM.charCount.textContent = charCount;
+            DOM.wordCount.textContent = wordCount;
+            DOM.sentenceCount.textContent = sentenceCount;
+            DOM.vowelCount.textContent = vowelCount;
+        };
+
+        const extractPatterns = () => {
+            const text = DOM.extractText.value;
+            const phoneRegex = /\b\d{10}\b/g;
+            const hashtagRegex = /#\w+/g;
+
+            const foundPhones = text.match(phoneRegex);
+            const foundHashtags = text.match(hashtagRegex);
+
+            DOM.phoneResult.textContent = foundPhones ? foundPhones.join(', ') : "No phones found";
+            DOM.hashtagResult.textContent = foundHashtags ? foundHashtags.join('  ') : "No hashtags found";
+        };
+
+        return {
+            init: () => {
+                DOM.validateEmailBtn.addEventListener('click', validateEmailFormat);
+                DOM.analyzeBtn.addEventListener('click', performTextAnalysis);
+                DOM.extractBtn.addEventListener('click', extractPatterns);
+            }
+        };
+    })();
+
+    document.addEventListener('DOMContentLoaded', RegexStringEngine.init);
+</script>
+</body>
+</html>
